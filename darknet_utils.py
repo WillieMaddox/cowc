@@ -1,9 +1,6 @@
 
 import os
 import numpy as np
-src_dir = '/media/RED6/DATA/geos/cowc/datasets'
-patch_dir = os.path.join(src_dir, 'patch_sets/detection')
-truth_dir = os.path.join(src_dir, 'ground_truth_sets')
 dst_dir = '/home/maddoxw/temp/cowc'
 anno_dir = os.path.join(dst_dir, 'annotations')
 
