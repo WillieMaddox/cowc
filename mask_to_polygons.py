@@ -115,13 +115,12 @@ for dset, paths in dset_paths.iteritems():
         top_mosaic_fname = os.path.join(src_dir, 'Vaihingen/Ortho/TOP_Mosaic_09cm.tif')
         top_mosaic_ds = gdal.Open(top_mosaic_fname)
         top_mosaic_gt = top_mosaic_ds.GetGeoTransform(can_return_null=False)
-        top_mosaic_gd = top_mosaic_ds.ReadAsArray().T
+        # top_mosaic_gd = top_mosaic_ds.ReadAsArray().T
         top_mosaic_im = cv2.imread(top_mosaic_fname)
-        shp = top_mosaic_im.shape
         top_mosaic_ds = None
     else:
         top_mosaic_im = None
-        top_mosaic_gd = None
+        # top_mosaic_gd = None
         top_mosaic_gt = None
 
     # srcimagefile = os.path.join(src_dir, dset, paths['georaster'])
@@ -173,9 +172,6 @@ for dset, paths in dset_paths.iteritems():
             img_min = np.min(contour, axis=0)
             img_max = np.max(contour, axis=0)
 
-            # if img_max[0] < 1800 or img_max[1] < 2400:
-            #     continue
-
             border = []
             if img_min[0] == 0:
                 border.append('left')
@@ -186,8 +182,4 @@ for dset, paths in dset_paths.iteritems():
             if img_max[1] >= image.shape[0] - 1:
                 border.append('bot')
 
-            if len(border) >= 1:
-                res = create_edge_chip(polygon, top_mosaic_im, top_mosaic_gt, border)
-
-            if res:
-                break
+            create_edge_chip(polygon, top_mosaic_im, top_mosaic_gt, border)
