@@ -134,7 +134,6 @@ for dset, paths in dset_paths.iteritems():
     imagefiles = [os.path.join(rasterpath, f) for f in os.listdir(rasterpath) if f.endswith('tif')]
 
     for imagefile in imagefiles:
-        res = False
         # if not imagefile.endswith('28.tif'):
         #     continue
 
@@ -182,4 +181,5 @@ for dset, paths in dset_paths.iteritems():
             if img_max[1] >= image.shape[0] - 1:
                 border.append('bot')
 
-            create_edge_chip(polygon, top_mosaic_im, top_mosaic_gt, border)
+            if len(border) >= 1:
+                create_edge_chip(polygon, top_mosaic_im, top_mosaic_gt, border)
