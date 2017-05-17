@@ -75,7 +75,6 @@ def get_poly_points(img_mask):
     pixel_coords = []
 
 
-
 if __name__ == '__main__':
 
     src_dir = '/media/RED6/DATA/geos/cowc/datasets'

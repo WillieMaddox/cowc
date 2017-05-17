@@ -1,4 +1,4 @@
-
+# Make cross-validation data files.
 import os
 import numpy as np
 dst_dir = '/home/maddoxw/temp/cowc'
